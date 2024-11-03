@@ -36,11 +36,7 @@ This is a GET request, with no params or data\
 
 User Data:\
 https://service.blocksi.net/config/v2/api/users/license\
-This is a POST request with this being the json template {"email": email}\
-
-Company Data:\
-https://service.blocksi.net/config/{email}\
-This is a GET request with no params or data\
+This is a POST request with this being the json template {"email": email}
 
 # Ideas
 Using Org Unit with this URL, problem is that it gives a 500 code error. Only tested with POST and json data.\

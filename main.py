@@ -3,7 +3,7 @@ import os
 
 from rich.console import Console
 from libs import pyess, config
-from libs.blocksi import user_data, policy_data, company_data
+from libs.blocksi import admin_data, user_data, policy_data
 
 console = Console()
 
@@ -106,13 +106,13 @@ def settings():
                 break
             console.print("Grabbed user data", style="blue")
             
-            console.print("Grabbing company data", style="blue")
-            company_data_dump = company_data.get_raw_company_data(email)
-            if company_data_dump == False:
-                console.print("Failed to grab company data", style="red")
+            console.print("Grabbing admin data", style="blue")
+            admin_data_dump = admin_data.get_raw_admin_data(email)
+            if admin_data_dump == False:
+                console.print("Failed to grab admin data", style="red")
                 pyess.pause()
                 break
-            console.print("Grabbed company data", style="blue")
+            console.print("Grabbed admin data", style="blue")
 
             console.print(f"Checking if {os.getcwd()}/BlocksiDump/ exists", style="blue")
             if not os.path.exists("BlocksiDump"):
@@ -134,10 +134,10 @@ def settings():
                 json.dump(user_data_dump, f, indent=4)
                 console.print(f"Saved user data", style="blue")
 
-            console.print(f"Saving company data", style="blue")
-            with open(f"BlocksiDump/{email}/company_data.json", "w+") as f:
-                json.dump(company_data_dump, f, indent=4)
-                console.print(f"Saved company data", style="blue")
+            console.print(f"Saving admin data", style="blue")
+            with open(f"BlocksiDump/{email}/admin_data.json", "w+") as f:
+                json.dump(admin_data_dump, f, indent=4)
+                console.print(f"Saved admin data", style="blue")
         else:
             console.print("Invalid Option", style="red")
             pyess.pause()
